@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const directoryPath = 'pages';
+const directoryPath = 'repos'; // Substitua pelo caminho do diretório que você deseja listar
 
 fs.readdir(directoryPath, { withFileTypes: true }, (err, files) => {
   if (err) {

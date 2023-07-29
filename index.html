@@ -11,13 +11,13 @@
     fetch('folders.json')
       .then(response => response.json())
       .then(data => {
-        const foldersList = document.getElementById('folderList');
+        const foldersList = document.getElementById('folders-list');
         foldersList.innerHTML = '';
 
         data.folders.forEach(folder => {
           const listItem = document.createElement('li');
           const link = document.createElement('a');
-          link.href = 'pages/' + folder;  // Define o atributo href para o diretório
+          link.href = 'repos/' + folder;  // Define o atributo href para o diretório
 
           link.textContent = folder;
           listItem.appendChild(link);
