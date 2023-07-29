@@ -21,7 +21,7 @@ jobs:
           command: |
             git config --global user.email "luizleno15@gmail.com"
             git config --global user.name "luislenosilva15"
-            git clone --branch=gh-pages git@github.com:luislenosilva15/github-static-page.git gh-pages
+            git clone --branch=gh-pages git@github.com:luislenosilva15/circleci-multiple-pages.git gh-pages
             mkdir -p gh-pages/repos/$CIRCLE_BRANCH
             cp -R storybook-static/* gh-pages/repos/$CIRCLE_BRANCH/
 
