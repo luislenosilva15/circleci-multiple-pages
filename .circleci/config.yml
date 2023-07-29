@@ -22,13 +22,17 @@ jobs:
             git config --global user.email "luizleno15@gmail.com"
             git config --global user.name "luislenosilva15"
             git clone --branch=gh-pages git@github.com:luislenosilva15/github-static-page.git gh-pages
-            mkdir -p gh-pages/pages/$CIRCLE_BRANCH
-            cp -R storybook-static/* gh-pages/pages/$CIRCLE_BRANCH/
+            mkdir -p gh-pages/repos/$CIRCLE_BRANCH
+            cp -R storybook-static/* gh-pages/repos/$CIRCLE_BRANCH/
 
       - run:
           name: Delete non-branch folders
           command: |
-            cd gh-pages/pages
+            cd gh-pages/repos
+
+            # LOG_FILE="$HOME/log.txt"  # Nome do arquivo de log no diretório do usuário
+            # ls -la > "$LOG_FILE"
+            # cat "$HOME/log.txt"
 
             BRANCHES=($(git ls-remote --heads origin | awk -F'/' '{print $3}'))
 
@@ -44,7 +48,7 @@ jobs:
           name: Run Node.js script
           command: |
             cd gh-pages
-            node folderList.js
+            node list-folders.js
             echo folders.json
             git add .
             git commit -m "Deploy Storybook to GitHub Pages"
