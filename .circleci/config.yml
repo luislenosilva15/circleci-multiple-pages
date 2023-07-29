@@ -1,0 +1,51 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: cimg/node:16.20.1
+
+    steps:
+      - checkout
+
+      # Etapa para instalar as dependências e gerar o Storybooks
+      - run:
+          name: Build Storybook
+          command: |
+            yarn
+            yarn build-storybook
+
+      # # Etapa para implantar o Storybook no GitHub Pagess
+      - run:
+          name: Deploy to GitHub Pages
+          command: |
+            git config --global user.email "luizleno15@gmail.com"
+            git config --global user.name "luislenosilva15"
+            git clone --branch=gh-pages git@github.com:luislenosilva15/github-static-page.git gh-pages
+            mkdir -p gh-pages/repos/$CIRCLE_BRANCH
+            cp -R storybook-static/* gh-pages/repos/$CIRCLE_BRANCH/
+
+      - run:
+          name: Delete non-branch folders
+          command: |
+            cd gh-pages/repos
+
+            BRANCHES=($(git ls-remote --heads origin | awk -F'/' '{print $3}'))
+
+            for directory in */; do
+              dir_name=${directory%/}
+              if [[ ! " ${BRANCHES[@]} " =~ " ${dir_name} " ]]; then
+                sudo rm -rf "$dir_name"
+                echo "A pasta '$dir_name' foi excluída."
+              fi
+            done
+
+      - run:
+          name: Run Node.js script
+          command: |
+            cd gh-pages
+            node list-folders.js
+            echo folders.json
+            git add .
+            git commit -m "Deploy Storybook to GitHub Pages"
+            git push origin gh-pages
