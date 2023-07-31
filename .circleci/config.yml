@@ -61,9 +61,3 @@ workflows:
           filters:
             branches:
               only: master
-      - build:
-          filters:
-            branches:
-              ignore: master
-            tags:
-              only: /.*/
