@@ -61,6 +61,6 @@ workflows:
           filters:
             tags:
               only: /^storybook.*/
+              only: /^master.*/
             branches:
               ignore: /.*/
-              ignore: master
