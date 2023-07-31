@@ -4,16 +4,6 @@ jobs:
     docker:
       - image: circleci/node:latest
 
-    steps:
-      - checkout
-
-      # Defina os comandos que deseja executar durante a fase de build
-      - run:
-          name: Install Dependencies
-          command: npm install
-
-      # Adicione outros passos necessários para construir o seu projeto
-
 workflows:
   build-and-deploy:
     jobs:
