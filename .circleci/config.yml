@@ -63,3 +63,7 @@ workflows:
               only: /^storybook.*/
             branches:
               ignore: /.*/
+    - build:
+          filters:
+            branches:
+              only: master
