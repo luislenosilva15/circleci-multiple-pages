@@ -1,0 +1,3 @@
+filters:
+  branches:
+    ignore: gh-pages
