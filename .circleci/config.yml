@@ -60,4 +60,7 @@ workflows:
       - build:
           filters:
             tags:
-              only: /^storybook$/
+              only: /^stable.*/
+              # only: /^stable-\d.\d.\d+/
+            branches:
+              ignore: /.*/
