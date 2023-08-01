@@ -34,7 +34,7 @@ jobs:
 
             # mkdir -p gh-pages/pages/$TARGET_DIR
             # cp -R storybook-static/* gh-pages/pages/$TARGET_DIR/
-            echo "A pasta '$TARGET_DIR'."
+            echo "A pasta '$TARGET_DIR' "
 
       # - run:
       #     name: Delete non-branch folders
