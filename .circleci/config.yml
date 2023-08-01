@@ -49,12 +49,13 @@ jobs:
               dir_name=${directory%/}
               if [[ ! " ${BRANCHES[@]} " =~ " ${dir_name} " ]]; then
                 echo "entrou aqi"
+                echo "'${BRANCHES[@]}'"
+                echo "'$dir_name'"
+
 
                 # sudo rm -rf "$dir_name"
               fi
             done
-
-            echo "'${directory[@]}'"
 
       # - run:
       #     name: Run Node.js script
