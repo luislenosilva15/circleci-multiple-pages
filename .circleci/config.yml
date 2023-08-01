@@ -60,7 +60,7 @@ jobs:
 
             for branch in "${BRANCHES[@]}"; do
               if [[ "$dir_name" == *"$branch"* ]]; then
-                echo "ele ta aqui"
+                echo "ele ${BRANCHES[@]}"
               fi
             done
 
