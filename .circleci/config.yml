@@ -49,7 +49,7 @@ jobs:
 
               if [[ ! " ${BRANCHES[@]} " == *" ${dir_name} " ]]; then
                 # sudo rm -rf "$dir_name"
-                echo "A pasta '$BRANCHES"
+                echo "A pasta '$BRANCHES[@]"
               fi
             done
 
