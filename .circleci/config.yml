@@ -23,19 +23,22 @@ jobs:
             git config --global user.name "luislenosilva15"
             git clone --branch=gh-pages git@github.com:luislenosilva15/circleci-multiple-pages.git gh-pages
 
-            TARGET_DIR=""
+            # TARGET_DIR=""
 
-            if [ -n "$CIRCLE_TAG" ]; then
-              TARGET_DIR=$CIRCLE_TAG
+            # if [ -n "$CIRCLE_TAG" ]; then
+            #   TARGET_DIR=$CIRCLE_TAG
              
-            else
-              TARGET_DIR=$CIRCLE_BRANCH
-            fi
+            # else
+            #   TARGET_DIR=$CIRCLE_BRANCH
+            # fi
 
-            # mkdir -p gh-pages/pages/$TARGET_DIR
-            # cp -R storybook-static/* gh-pages/pages/$TARGET_DIR/
+            # # mkdir -p gh-pages/pages/$TARGET_DIR
+            # # cp -R storybook-static/* gh-pages/pages/$TARGET_DIR/
 
-            echo "Dir '$CIRCLE_TAG'"
+            # echo "Dir '$CIRCLE_TAG'"
+
+            MY_VARIABLE_NO_STORYBOOK=$(echo "${MY_VARIABLE}" | sed -E 's/storybook\.//g; s/[.][0-9]+//g')
+            echo "Variável sem 'storybook.' e sufixo numérico: ${CIRCLE_TAG}"
 
       # - run:
       #     name: Delete non-branch folders
