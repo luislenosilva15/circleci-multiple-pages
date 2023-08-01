@@ -61,6 +61,13 @@ jobs:
       #       git commit -m "Deploy Storybook to GitHub Pages"
       #       git push origin gh-pages
 
+  delete:
+    docker:
+      - image: cimg/node:16.20.0
+
+    steps:
+      - checkout
+
 workflows:
   deploy-storybook:
     jobs:
@@ -74,3 +81,9 @@ workflows:
           filters:
             branches:
               only: master
+
+      - delete:
+          filters:
+            branches:
+              only:
+                - /.*/
