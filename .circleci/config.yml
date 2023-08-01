@@ -40,15 +40,16 @@ jobs:
           command: |
             cd gh-pages/pages
 
-            BRANCHES=($(git ls-remote --heads origin | cut -d'/' -f3-))
+            # BRANCHES=($(git ls-remote --heads origin | cut -d'/' -f3-))
+            BRANCHES=("branch1" "branch2" "branch3")
 
             for directory in */; do
               dir_name=${directory%/}
               echo "branch'$dir_name'"
 
-              if [[ ! " ($(git ls-remote --heads origin | cut -d'/' -f3-))[@]} " == *" ${dir_name} " ]]; then
+              if [[ ! " ${BRANCHES[@]} " == *" ${dir_name} " ]]; then
                 # sudo rm -rf "$dir_name"
-                echo "A pasta ss"
+                echo "A pasta '$BRANCHES"
               fi
             done
 
