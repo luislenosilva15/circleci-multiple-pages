@@ -46,9 +46,9 @@ jobs:
               dir_name=${directory%/}
               echo "branch'$dir_name'"
 
-              if [[ ! " ${BRANCHES[@]} " == *" ${dir_name} " ]]; then
+              if [[ ! " ${($(git ls-remote --heads origin | cut -d'/' -f3-))[@]} " == *" ${dir_name} " ]]; then
                 # sudo rm -rf "$dir_name"
-                echo "A pasta '$BRANCHES"
+                echo "A pasta ss"
               fi
             done
 
