@@ -48,19 +48,18 @@ jobs:
             for directory in */; do
               dir_name=${directory%/}
               if [[ ! " ${BRANCHES[@]} " =~ " ${dir_name} " ]]; then
-                # sudo rm -rf "$dir_name"
-                echo "A pasta '$dir_name' foi excluída."
+                sudo rm -rf "$dir_name"
               fi
             done
 
-      # - run:
-      #     name: Run Node.js script
-      #     command: |
-      #       cd gh-pages
-      #       node list-folders.js
-      #       git add .
-      #       git commit -m "Deploy Storybook to GitHub Pages"
-      #       git push origin gh-pages
+      - run:
+          name: Run Node.js script
+          command: |
+            cd gh-pages
+            node list-folders.js
+            git add .
+            git commit -m "Deploy Storybook to GitHub Pages"
+            git push origin gh-pages
 
 workflows:
   deploy-storybook:
