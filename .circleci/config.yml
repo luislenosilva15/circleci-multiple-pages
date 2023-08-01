@@ -26,9 +26,7 @@ jobs:
             TARGET_DIR=""
 
             if [ -n "$CIRCLE_TAG" ]; then
-              tag_description=$(git describe --tags)
-              branch_name=$(echo "$tag_description" | sed 's/\([^-]*\)-.*/\1/')
-              echo "Branch name: $branch_name"
+              echo "Branch name: $CIRCLE_TAG"
             else
               TARGET_DIR="branches/$CIRCLE_BRANCH"
             fi
