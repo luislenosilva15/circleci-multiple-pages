@@ -41,12 +41,15 @@ jobs:
 
             BRANCHES=($(git ls-remote --heads origin | cut -d'/' -f3-))
 
+            echo "branches '${BRANCHES[@]}'"
+
             for ((i=0; i<${#BRANCHES[@]}; i++)); do
                 BRANCHES[$i]=${BRANCHES[$i]#*/}
             done
 
             for branch in "${BRANCHES[@]}"; do
               if [[ ! "$dir_name" == *"$branch"* ]]; then
+                echo "entrou '$dir_name'"
                 sudo rm -rf "$dir_name"
               fi
             done
