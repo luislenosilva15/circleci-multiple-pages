@@ -41,7 +41,7 @@ jobs:
             cd gh-pages/pages
 
             # BRANCHES=($(git ls-remote --heads origin | cut -d'/' -f3-))
-            BRANCHES=("branch1" "branch2" "branch3")
+            BRANCHES=("techtask/sp-0000" "techtask/sp-2222")
 
             for directory in */; do
               dir_name=${directory%/}
