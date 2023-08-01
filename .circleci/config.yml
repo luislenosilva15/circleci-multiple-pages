@@ -26,7 +26,8 @@ jobs:
             TARGET_DIR=""
 
             if [ -n "$CIRCLE_TAG" ]; then
-              echo "Branch name: $CIRCLE_TAG"
+              extracted_value=$(echo "$CIRCLE_TAG" | sed 's/^storybook\.\(.*\)\..*$/\1/')
+              echo "Extracted value: $extracted_value"
             else
               TARGET_DIR="branches/$CIRCLE_BRANCH"
             fi
