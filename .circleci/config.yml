@@ -82,6 +82,8 @@ workflows:
             branches:
               only: master
 
+  delete branch:
+    jobs:
       - delete:
           filters:
             branches:
