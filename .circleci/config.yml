@@ -26,7 +26,8 @@ jobs:
             TARGET_DIR=""
 
             if [ -n "$CIRCLE_TAG" ]; then
-              TARGET_DIR="tags/$CIRCLE_BRANCH"
+              TAG_REF=$(git describe --tags --exact-match HEAD)
+              TARGET_DIR=$(git rev-parse --symbolic-full-name $TAG_REF | sed 's/refs\/heads\///')
             else
               TARGET_DIR="branches/$CIRCLE_BRANCH"
             fi
