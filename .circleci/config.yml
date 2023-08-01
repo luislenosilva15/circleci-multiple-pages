@@ -45,12 +45,11 @@ jobs:
                 BRANCHES[$i]=${BRANCHES[$i]#*/}
             done
 
-            for branch in "${BRANCHES[@]}"; do
-              if [[ ! "$dir_name" == *"$branch"* ]]; then
-                echo " branches '${BRANCHES[@]}'"
-                echo " diretorio '$dir_name'"
-
+            for directory in */; do
+              dir_name=${directory%/}
+              if [[ ! " ${BRANCHES[@]} " =~ " ${dir_name} " ]]; then
                 # sudo rm -rf "$dir_name"
+                echo "A pasta '$dir_name' foi excluída."
               fi
             done
 
