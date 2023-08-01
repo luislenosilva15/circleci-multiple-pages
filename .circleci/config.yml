@@ -47,7 +47,9 @@ jobs:
 
             for branch in "${BRANCHES[@]}"; do
               if [[ ! "$dir_name" == *"$branch"* ]]; then
-                echo "apaga '$dir_name'"
+                echo " branches '${BRANCHES[@]}'"
+                echo " diretorio '$dir_name'"
+
                 # sudo rm -rf "$dir_name"
               fi
             done
