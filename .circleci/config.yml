@@ -37,8 +37,8 @@ jobs:
 
             # echo "Dir '$CIRCLE_TAG'"
 
-            MY_VARIABLE_NO_STORYBOOK=$(echo "${MY_VARIABLE}" | sed -E 's/storybook\.//g; s/[.][0-9]+//g')
-            echo "Variável sem 'storybook.' e sufixo numérico: ${CIRCLE_TAG}"
+            MY_VARIABLE_NO_STORYBOOK=$(echo "${CIRCLE_TAG}" | sed -E 's/storybook\.//g; s/[.][0-9]+//g')
+            echo "Variável sem 'storybook.' e sufixo numérico: ${MY_VARIABLE_NO_STORYBOOK}"
 
       # - run:
       #     name: Delete non-branch folders
