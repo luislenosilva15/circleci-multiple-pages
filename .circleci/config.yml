@@ -47,7 +47,7 @@ jobs:
             for directory in */; do
               dir_name=${directory%/}
               echo "pasta local'$dir_name'"
-              echo "branch'$(git ls-remote --heads origin | awk '{print $2}' | awk -F'/' '{print $3}')'"
+              echo "branch'$(git ls-remote --heads origin | cut -d'/' -f3-)'"
 
               if [[ ! " ${BRANCHES[@]} " =~ " ${dir_name} " ]]; then
                 sudo rm -rf "$dir_name"
