@@ -44,10 +44,9 @@ jobs:
 
             # echo "branchs '$(git ls-remote --heads origin)'"
 
-            for branch in "${BRANCHES[@]}"; do
+             for branch in "${BRANCHES[@]}"; do
                 if [[ "$branch" == *"$dir_name"* ]]; then
-                    echo "branch'sim'"
-                    break
+                    echo "A pasta nao esta"
                 fi
             done
 
