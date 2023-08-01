@@ -26,13 +26,13 @@ jobs:
             TARGET_DIR=""
 
             if [ -n "$CIRCLE_TAG" ]; then
-              TAG_REF=$(git describe --tags --exact-match HEAD)
-              TARGET_DIR=$(git rev-parse --symbolic-full-name $TAG_REF | sed 's/refs\/heads\///')
+              tag_description=$(git describe --tags)
+              branch_name=$(echo "$tag_description" | sed 's/\([^-]*\)-.*/\1/')
+              echo "Branch name: $branch_name"
             else
               TARGET_DIR="branches/$CIRCLE_BRANCH"
             fi
 
-            echo " '$TARGET_DIR' "
 
             # mkdir -p gh-pages/pages/$CIRCLE_BRANCH
             # cp -R storybook-static/* gh-pages/pages/$CIRCLE_BRANCH/
