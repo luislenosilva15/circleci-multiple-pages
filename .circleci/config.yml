@@ -34,8 +34,6 @@ jobs:
             mkdir -p gh-pages/pages/$TARGET_DIR
             cp -R storybook-static/* gh-pages/pages/$TARGET_DIR/
 
-            echo "targetDir '$TARGET_DIR'"
-
       - run:
           name: Delete non-branch folders
           command: |
@@ -47,26 +45,20 @@ jobs:
                 BRANCHES[$i]=${BRANCHES[$i]#*/}
             done
 
-            for directory in */; do
-              dir_name=${directory%/}
-              if [[ ! " ${BRANCHES[@]} " =~ " ${dir_name} " ]]; then
-                echo "entrou aqi"
-                echo "'${BRANCHES[@]}'"
-                echo "'$dir_name'"
-
-
-                # sudo rm -rf "$dir_name"
+            for branch in "${BRANCHES[@]}"; do
+              if [[ ! "$dir_name" == *"$branch"* ]]; then
+                sudo rm -rf "$dir_name"
               fi
             done
 
-      # - run:
-      #     name: Run Node.js script
-      #     command: |
-      #       cd gh-pages
-      #       node list-folders.js
-      #       git add .
-      #       git commit -m "Deploy Storybook to GitHub Pages"
-      #       git push origin gh-pages
+      - run:
+          name: Run Node.js script
+          command: |
+            cd gh-pages
+            node list-folders.js
+            git add .
+            git commit -m "Deploy Storybook to GitHub Pages"
+            git push origin gh-pages
 
 workflows:
   deploy-storybook:
