@@ -48,7 +48,7 @@ jobs:
 
               if [[ ! " ${BRANCHES[@]} " == *" ${dir_name} " ]]; then
                 # sudo rm -rf "$dir_name"
-                echo "A pasta '$dir_name' foi excluída."
+                echo "A pasta '$BRANCHES"
               fi
             done
 
