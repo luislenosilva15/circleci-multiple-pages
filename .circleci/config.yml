@@ -42,7 +42,7 @@ jobs:
 
             BRANCHES=($(git ls-remote --heads origin | awk -F'/' '{print $3}'))
 
-            echo "branchs '$(git ls-remote --heads origin | awk -F'/' '{print $3}')'"
+            echo "branchs '$(git ls-remote --heads origin)'"
 
             # for directory in */; do
             #   dir_name=${directory%/}
