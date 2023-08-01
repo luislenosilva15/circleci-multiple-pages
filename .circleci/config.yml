@@ -53,6 +53,12 @@ jobs:
               fi
             done
 
+            for branch in "${BRANCHES[@]}"; do
+              if [[ "$dir_name" == *"$branch"* ]]; then
+                echo "ele ta aqui"
+              fi
+            done
+
       # - run:
       #     name: Run Node.js script
       #     command: |
