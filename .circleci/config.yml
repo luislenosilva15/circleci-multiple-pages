@@ -50,12 +50,14 @@ jobs:
             git push origin gh-pages
 
 workflows:
-  build_and_test:
+  deploy-storybook:
     jobs:
       - build:
           filters:
             tags:
-              only: /^storybook-.+/
+              only: /^storybook.*/
+            branches:
+              ignore: /.*/
       - build:
           filters:
             branches:
