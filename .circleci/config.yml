@@ -54,13 +54,4 @@ jobs:
 workflows:
   deploy-storybook:
     jobs:
-      - build:
-          filters:
-            tags:
-              only: /^storybook.*/
-            branches:
-              ignore: /.*/
-      - build:
-          filters:
-            branches:
-              only: master
+      - build
