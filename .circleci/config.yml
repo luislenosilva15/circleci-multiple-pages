@@ -44,16 +44,23 @@ jobs:
 
             # echo "branchs '$(git ls-remote --heads origin)'"
 
-            for directory in */; do
-              dir_name=${directory%/}
-              echo "pasta local'$dir_name'"
-              echo "branch''"
-
-              if [[ ! " ${BRANCHES[@]} " =~ " ${dir_name} " ]]; then
-                sudo rm -rf "$dir_name"
-                echo "A pasta '$dir_name' foi excluída."
-              fi
+            for branch in "${BRANCHES[@]}"; do
+                if [[ "$branch" == *"$dir_name"* ]]; then
+                    echo "branch'sim'"
+                    break
+                fi
             done
+
+            # for directory in */; do
+            #   dir_name=${directory%/}
+            #   echo "pasta local'$dir_name'"
+            #   echo "branch''"
+
+            #   if [[ ! " ${BRANCHES[@]} " =~ " ${dir_name} " ]]; then
+            #     sudo rm -rf "$dir_name"
+            #     echo "A pasta '$dir_name' foi excluída."
+            #   fi
+            # done
 
       # - run:
       #     name: Run Node.js script
