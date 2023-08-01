@@ -34,22 +34,22 @@ jobs:
 
             mkdir -p gh-pages/pages/$TARGET_DIR
             cp -R storybook-static/* gh-pages/pages/$TARGET_DIR/
-            echo "A pasta '$TARGET_DIR' foi excluída."
+            echo "A pasta '$TARGET_DIR'."
 
-      # - run:
-      #     name: Delete non-branch folders
-      #     command: |
-      #       cd gh-pages/pages
+      - run:
+          name: Delete non-branch folders
+          command: |
+            cd gh-pages/pages
 
-      #       BRANCHES=($(git ls-remote --heads origin | awk -F'/' '{print $3}'))
+            BRANCHES=($(git ls-remote --heads origin | awk -F'/' '{print $3}'))
 
-      #       for directory in */; do
-      #         dir_name=${directory%/}
-      #         if [[ ! " ${BRANCHES[@]} " =~ " ${dir_name} " ]]; then
-      #           sudo rm -rf "$dir_name"
-      #           echo "A pasta '$dir_name' foi excluída."
-      #         fi
-      #       done
+            for directory in */; do
+              dir_name=${directory%/}
+              if [[ ! " ${BRANCHES[@]} " =~ " ${dir_name} " ]]; then
+                sudo rm -rf "$dir_name"
+                echo "A pasta '$dir_name' foi excluída."
+              fi
+            done
 
       # - run:
       #     name: Run Node.js script
