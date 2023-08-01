@@ -9,11 +9,11 @@ jobs:
       - checkout
 
       # Etapa para instalar as dependências e gerar o Storybooks
-      - run:
-          name: Build Storybook
-          command: |
-            yarn
-            yarn build-storybook
+      # - run:
+      #     name: Build Storybook
+      #     command: |
+      #       yarn
+      #       yarn build-storybook
 
       # # Etapa para implantar o Storybook no GitHub Pagess
       - run:
@@ -34,7 +34,7 @@ jobs:
 
             mkdir -p gh-pages/pages/$TARGET_DIR
             cp -R storybook-static/* gh-pages/pages/$TARGET_DIR/
-            echo"'$TARGET_DIR'"
+            echo"aqui '$TARGET_DIR'"
 
       - run:
           name: Delete non-branch folders
