@@ -32,8 +32,8 @@ jobs:
               TARGET_DIR=$CIRCLE_BRANCH
             fi
 
-            mkdir -p gh-pages/pages/$TARGET_DIR
-            cp -R storybook-static/* gh-pages/pages/$TARGET_DIR/
+            # mkdir -p gh-pages/pages/$TARGET_DIR
+            # cp -R storybook-static/* gh-pages/pages/$TARGET_DIR/
             echo "A pasta '$TARGET_DIR' foi excluída."
 
       - run:
