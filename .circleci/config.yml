@@ -20,7 +20,7 @@ jobs:
           name: Deploy to GitHub Pages
           command: |
 
-            echo "A pasta '$$CIRCLE_TAG'"
+            echo "A pasta '$CIRCLE_TAG'"
             # git config --global user.email "luizleno15@gmail.com"
             # git config --global user.name "luislenosilva15"
             # git clone --branch=gh-pages git@github.com:luislenosilva15/circleci-multiple-pages.git gh-pages
