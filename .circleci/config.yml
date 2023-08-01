@@ -41,26 +41,14 @@ jobs:
 
             BRANCHES=($(git ls-remote --heads origin | cut -d'/' -f3-))
 
-            for directory in */; do
-              dir_name=${directory%/}
-              echo "branch'$dir_name'"
-
-              if [[ ! " ${BRANCHES[@]} " == *" ${dir_name} " ]]; then
-                # sudo rm -rf "$dir_name"
-                echo "'$dir_name'"
-                echo "'${BRANCHES[@]}'"
-
-              fi
-            done
-
             for ((i=0; i<${#BRANCHES[@]}; i++)); do
-                # Usa a expansão de substring para remover a parte antes do "/"
                 BRANCHES[$i]=${BRANCHES[$i]#*/}
             done
 
             for branch in "${BRANCHES[@]}"; do
-              if [[ "$dir_name" == *"$branch"* ]]; then
-                echo "ele ${BRANCHES[@]}"
+              if [[ ! "$dir_name" == *"$branch"* ]]; then
+                echo "apaga '$dir_name'"
+                # sudo rm -rf "$dir_name"
               fi
             done
 
