@@ -9,11 +9,11 @@ jobs:
       - checkout
 
       # Etapa para instalar as dependências e gerar o Storybooks
-      # - run:
-      #     name: Build Storybook
-      #     command: |
-      #       yarn
-      #       yarn build-storybook
+      - run:
+          name: Build Storybook
+          command: |
+            yarn
+            yarn build-storybook
 
       # # # Etapa para implantar o Storybook no GitHub Pagess
       - run:
@@ -23,44 +23,42 @@ jobs:
             git config --global user.name "luislenosilva15"
             git clone --branch=gh-pages git@github.com:luislenosilva15/circleci-multiple-pages.git gh-pages
 
-            # TARGET_DIR=""
+            TARGET_DIR=""
 
-            # if [ -n "$CIRCLE_TAG" ]; then
-            #   TARGET_DIR=$(echo "${CIRCLE_TAG}" | sed -E 's/storybook\.//g; s/[.][0-9]+//g')
-            # else
-            #   TARGET_DIR=$CIRCLE_BRANCH
-            # fi
+            if [ -n "$CIRCLE_TAG" ]; then
+              TARGET_DIR=$(echo "${CIRCLE_TAG}" | sed -E 's/storybook\.//g; s/[.][0-9]+//g')
+            else
+              TARGET_DIR=$CIRCLE_BRANCH
+            fi
 
-            # echo "Variável ${TARGET_DIR}"
-            # mkdir -p gh-pages/pages/$TARGET_DIR
-            # cp -R storybook-static/* gh-pages/pages/$TARGET_DIR/
+            echo "Variável ${TARGET_DIR}"
+            mkdir -p gh-pages/pages/$TARGET_DIR
+            cp -R storybook-static/* gh-pages/pages/$TARGET_DIR/
 
       - run:
           name: Delete non-branch folders
           command: |
             cd gh-pages/pages
 
-            # BRANCHES=($(git ls-remote --heads origin | cut -d'/' -f3-))
-            BRANCHES=("techtask/sp-0000" "techtask/sp-2222")
+            BRANCHES=($(git ls-remote --heads origin | cut -d'/' -f3-))
 
             for directory in */; do
               dir_name=${directory%/}
               echo "branch'$dir_name'"
 
               if [[ ! " ${BRANCHES[@]} " == *" ${dir_name} " ]]; then
-                # sudo rm -rf "$dir_name"
-                echo "A pasta '${BRANCHES[@]}"
+                sudo rm -rf "$dir_name"
               fi
             done
 
-      # - run:
-      #     name: Run Node.js script
-      #     command: |
-      #       cd gh-pages
-      #       node list-folders.js
-      #       git add .
-      #       git commit -m "Deploy Storybook to GitHub Pages"
-      #       git push origin gh-pages
+      - run:
+          name: Run Node.js script
+          command: |
+            cd gh-pages
+            node list-folders.js
+            git add .
+            git commit -m "Deploy Storybook to GitHub Pages"
+            git push origin gh-pages
 
 workflows:
   deploy-storybook:
