@@ -28,11 +28,7 @@ jobs:
       - run:
           name: Delete non-branch folders
           command: |
-            cd gh-pages/repos
-
-            # LOG_FILE="$HOME/log.txt"  # Nome do arquivo de log no diretório do usuário
-            # ls -la > "$LOG_FILE"
-            # cat "$HOME/log.txt"
+            cd gh-pages/pages
 
             BRANCHES=($(git ls-remote --heads origin | awk -F'/' '{print $3}'))
 
