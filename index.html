@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Listagem de Pastas</title>
+  <title>Agenda edu storybook</title>
 </head>
 <body>
-  <h1>Listagem de Pastas</h1>
-  <ul id="folders-list"></ul>
+  <h1>Repositórios</h1>
+  <ul id="foldersList"></ul>
 
   <script>
     fetch('folders.json')
       .then(response => response.json())
       .then(data => {
-        const foldersList = document.getElementById('folders-list');
+        const foldersList = document.getElementById('foldersList');
         foldersList.innerHTML = '';
 
         data.folders.forEach(folder => {
           const listItem = document.createElement('li');
           const link = document.createElement('a');
-          link.href = 'repos/' + folder;  // Define o atributo href para o diretório
+          link.href = 'pages/' + folder;
 
           link.textContent = folder;
           listItem.appendChild(link);
@@ -25,7 +25,7 @@
         });
       })
       .catch(error => {
-        console.error('Erro ao carregar o arquivo JSON:', error);
+        console.error('Error loading JSON file:', error);
       });
   </script>
 </body>

@@ -1,11 +1,9 @@
-const fs = require('fs');
-const path = require('path');
-
-const directoryPath = 'repos'; // Substitua pelo caminho do diretório que você deseja listar
+const fs = require('fs')
+const directoryPath = 'pages';
 
 fs.readdir(directoryPath, { withFileTypes: true }, (err, files) => {
   if (err) {
-    console.error('Erro ao ler o diretório:', err);
+    console.error('Error reading directory:', err);
     return;
   }
 
@@ -17,10 +15,8 @@ fs.readdir(directoryPath, { withFileTypes: true }, (err, files) => {
 
   fs.writeFile('folders.json', json, 'utf8', err => {
     if (err) {
-      console.error('Erro ao gravar o arquivo:', err);
+      console.error('Error writing file:', err);
       return;
     }
-
-    console.log('Arquivo JSON gerado com sucesso!');
   });
 });
