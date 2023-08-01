@@ -44,11 +44,14 @@ jobs:
 
             # echo "branchs '$(git ls-remote --heads origin)'"
 
-             for branch in "${BRANCHES[@]}"; do
+            for branch in "${BRANCHES[@]}"; do
                 if [[ "$branch" == *"$dir_name"* ]]; then
-                    echo "A pasta nao esta"
+                    echo "branch'sim'"
+                    break
                 fi
             done
+
+
 
             # for directory in */; do
             #   dir_name=${directory%/}
