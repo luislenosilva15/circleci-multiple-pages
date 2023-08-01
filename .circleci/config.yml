@@ -31,7 +31,6 @@ jobs:
               TARGET_DIR=$CIRCLE_BRANCH
             fi
 
-            echo "Variável ${TARGET_DIR}"
             mkdir -p gh-pages/pages/$TARGET_DIR
             cp -R storybook-static/* gh-pages/pages/$TARGET_DIR/
 
