@@ -46,7 +46,9 @@ jobs:
 
             for directory in */; do
               dir_name=${directory%/}
-              echo "a '$dir_name'"
+              echo "pasta local'$dir_name'"
+              echo "branch'$BRANCHES'"
+
               if [[ ! " ${BRANCHES[@]} " =~ " ${dir_name} " ]]; then
                 sudo rm -rf "$dir_name"
                 # echo "A pasta '$dir_name' foi excluída."
