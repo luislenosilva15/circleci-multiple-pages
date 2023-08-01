@@ -53,6 +53,11 @@ jobs:
               fi
             done
 
+            for ((i=0; i<${#BRANCHES[@]}; i++)); do
+                # Usa a expansão de substring para remover a parte antes do "/"
+                BRANCHES[$i]=${BRANCHES[$i]#*/}
+            done
+
             for branch in "${BRANCHES[@]}"; do
               if [[ "$dir_name" == *"$branch"* ]]; then
                 echo "ele ta aqui"
