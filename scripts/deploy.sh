@@ -29,7 +29,7 @@ for branch in "${BRANCHES[@]}"; do
 done
 
 cd ../
-# node list-folders.js
-# git add .
-# git commit -m "Deploy Storybook to GitHub Pages"
-# git push origin gh-pages
+node list-folders.js
+git add .
+git commit -m "Deploy Storybook to GitHub Pages"
+git push origin gh-pages
