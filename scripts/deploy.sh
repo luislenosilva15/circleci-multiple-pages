@@ -24,7 +24,7 @@ done
 
 for branch in "${BRANCHES[@]}"; do
     if [[ ! "$dir_name" == *"$branch"* ]]; then
-    sudo rm -rf "$dir_name"
+        sudo rm -rf "$dir_name"
     fi
 done
 
