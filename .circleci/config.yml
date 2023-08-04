@@ -18,9 +18,9 @@ jobs:
       # # # Etapa para implantar o Storybook no GitHub Pagess
       - run:
           name: Deploy to GitHub Pages
-          command: | 
-          chmod +x ./scripts/deploy.sh
-          ./scripts/deploy.sh
+          command: |
+            chmod +x ./scripts/deploy.sh
+            ./scripts/deploy.sh
 
 workflows:
   deploy-storybook:
