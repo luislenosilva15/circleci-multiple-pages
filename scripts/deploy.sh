@@ -24,6 +24,7 @@ done
 
 for branch in "${BRANCHES[@]}"; do
     if [[ ! "$dir_name" == *"$branch"* ]]; then
+        echo "Removeu"
         sudo rm -rf "$dir_name"
     fi
 done
