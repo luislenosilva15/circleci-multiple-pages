@@ -34,9 +34,7 @@ jobs:
             mkdir -p gh-pages/pages/$TARGET_DIR
             cp -R storybook-static/* gh-pages/pages/$TARGET_DIR/
 
-      - run:
-          name: Delete non-branch folders
-          command: |
+
             cd gh-pages/pages
 
             BRANCHES=($(git ls-remote --heads origin | cut -d'/' -f3-))
@@ -51,14 +49,11 @@ jobs:
               fi
             done
 
-      - run:
-          name: Run Node.js script
-          command: |
             cd gh-pages
-            node list-folders.js
-            git add .
-            git commit -m "Deploy Storybook to GitHub Pages"
-            git push origin gh-pages
+            # node list-folders.js
+            # git add .
+            # git commit -m "Deploy Storybook to GitHub Pages"
+            # git push origin gh-pages
 
 workflows:
   deploy-storybook:
