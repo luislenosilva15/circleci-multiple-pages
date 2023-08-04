@@ -28,7 +28,7 @@ for branch in "${BRANCHES[@]}"; do
     fi
 done
 
-cd gh-pages
+cd ../
 # node list-folders.js
 # git add .
 # git commit -m "Deploy Storybook to GitHub Pages"
